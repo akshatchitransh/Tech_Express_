@@ -59,9 +59,9 @@ export const signin = asyncHandler(async (req, res, next) => {
       process.env.JWT_SECRET
     )
 
-   // const { password: pass, ...rest } = validUser._doc
+    const { password: pass, ...rest } = validUser._doc
 
-    res.status(200).cookie("access_token", token, { httpOnly: true , secure:true }).json({msg:"loggedin"})
+    res.status(200).cookie("access_token", token, { httpOnly: true , secure:true }).json(rest)
   } catch (error) {
     next(error)
   }
