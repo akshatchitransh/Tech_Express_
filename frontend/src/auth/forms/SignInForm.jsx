@@ -1,6 +1,11 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-
+import { useDispatch, useSelector } from "react-redux"
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "@/redux/user/userSlice"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -31,10 +36,11 @@ const SignInForm = () => {
 
   const navigate = useNavigate()
 
-  const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(null)
-
+ 
+ const dispatch = useDispatch()
   
+ const { loading, error: errorMessage } = useSelector((state) => state.user)
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,10 +51,9 @@ const SignInForm = () => {
   })
 
   
-  async function onSubmit(values) {
+   async function onSubmit(values) {
     try {
-      setLoading(true)
-      setErrorMessage(null)
+      dispatch(signInStart())
 
       const res = await fetch("/api/auth/signin", {
         method: "POST",
@@ -59,25 +64,22 @@ const SignInForm = () => {
       const data = await res.json()
 
       if (data.success === false) {
-        setLoading(false)
         toast({ title: "Sign in failed! Please try again." })
 
-        return setErrorMessage(data.message)
+        dispatch(signInFailure(data.message))
       }
 
-      setLoading(false)
-
       if (res.ok) {
+        dispatch(signInSuccess(data))
+
         toast({ title: "Sign in Successful!" })
         navigate("/")
       }
     } catch (error) {
-      setErrorMessage(error.message)
-      setLoading(false)
       toast({ title: "Something went wrong!" })
+      dispatch(signInFailure(error.message))
     }
   }
-
   return (
     <div className="min-h-screen mt-20">
       <div className="flex p-3 max-w-3xl sm:max-w-5xl mx-auto flex-col md:flex-row md:items-center gap-5">
