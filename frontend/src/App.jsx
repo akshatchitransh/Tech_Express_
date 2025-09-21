@@ -10,6 +10,8 @@ import NewsArticle from './pages/NewsArticle'
 import Header from './components/shared/Header'
 import Footer from './components/shared/Footer'
 import PrivateRoute from './components/shared/PrivateRoute'
+import CreatePost from './pages/CreatePost'
+import AdminPrivateRoute from './components/shared/AdminPrivateRoute'
 const App = () => {
   return (
     <BrowserRouter>
@@ -20,6 +22,11 @@ const App = () => {
         <Route path='/' element={<Home />} />
           <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+        
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/create-post" element={<CreatePost />} />
+         {/* <Route path="/update-post/:postId" element={<EditPost />} /> */}
         </Route>
         <Route path='/about' element={<About />} />
         <Route path='/news' element={<NewsArticle />} />
