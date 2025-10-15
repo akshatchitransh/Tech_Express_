@@ -21,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const API_BASE_URL = 'https://tech-express-1.onrender.com';
+const API_BASE = 'https://tech-express-1.onrender.com';
 
 const Header = () => {
   const dispatch = useDispatch()

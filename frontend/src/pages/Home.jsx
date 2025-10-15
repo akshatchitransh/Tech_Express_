@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-const API_BASE_URL = 'https://tech-express-1.onrender.com';
+const API_BASE = 'https://tech-express-1.onrender.com';
 
 
 const Home = () => {

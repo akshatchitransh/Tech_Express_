@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input"
 import { Toaster } from "../../components/ui/sonner"
 import { toast } from "sonner"
 
-const API_BASE_URL = 'https://tech-express-1.onrender.com';
+const API_BASE = 'https://tech-express-1.onrender.com';
 
 const formSchema = z.object({
   username: z

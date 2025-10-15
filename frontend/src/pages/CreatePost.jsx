@@ -18,7 +18,7 @@ import Quill from "quill"
 import "quill/dist/quill.snow.css"
 
 import { useNavigate } from "react-router-dom"
-const API_BASE_URL = 'https://tech-express-1.onrender.com';
+const API_BASE = 'https://tech-express-1.onrender.com';
 
 
 const CreatePost = () => {

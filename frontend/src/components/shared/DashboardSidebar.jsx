@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { IoIosCreate, IoIosDocument } from "react-icons/io"
 import { MdDashboardCustomize } from "react-icons/md"
-const API_BASE_URL = 'https://tech-express-1.onrender.com';
+const API_BASE = 'https://tech-express-1.onrender.com';
 
 
 const DashboardSidebar = () => {
