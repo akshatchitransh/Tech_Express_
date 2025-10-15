@@ -20,12 +20,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+const API_BASE_URL = 'https://tech-express-1.onrender.com';
+
 const Header = () => {
   const dispatch = useDispatch()
  const { currentUser } = useSelector((state) => state.user)
  const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${API_BASE}/api/user/signout`, {
         method: "POST",
       })
 

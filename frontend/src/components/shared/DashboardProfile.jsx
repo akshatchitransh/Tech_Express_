@@ -25,6 +25,8 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog"
 import { toast } from "sonner"
+const API_BASE_URL = 'https://tech-express-1.onrender.com';
+
 
 const DashboardProfile = () => {
   const { currentUser, error, loading } = useSelector((state) => state.user)
@@ -81,7 +83,7 @@ const DashboardProfile = () => {
         profilePicture,
       }
 
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`${API_BASE}/api/user/update/${currentUser._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -109,7 +111,7 @@ const DashboardProfile = () => {
     try {
       dispatch(deleteUserStart())
 
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`${API_BASE}/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
       })
 
@@ -128,7 +130,7 @@ const DashboardProfile = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${API_BASE}/api/user/signout`, {
         method: "POST",
       })
 

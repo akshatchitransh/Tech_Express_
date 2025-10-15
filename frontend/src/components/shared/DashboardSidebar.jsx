@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { IoIosCreate, IoIosDocument } from "react-icons/io"
 import { MdDashboardCustomize } from "react-icons/md"
+const API_BASE_URL = 'https://tech-express-1.onrender.com';
+
 
 const DashboardSidebar = () => {
   const dispatch = useDispatch()
@@ -13,7 +15,7 @@ const DashboardSidebar = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${API_BASE}/api/user/signout`, {
         method: "POST",
       })
 

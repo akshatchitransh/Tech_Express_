@@ -4,6 +4,7 @@ import { FaHome, FaSignOutAlt, FaUserAlt } from "react-icons/fa"
 import { IoIosCreate, IoIosDocument } from "react-icons/io"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+const API_BASE_URL = 'https://tech-express-1.onrender.com';
 
 const BottomNavBar = () => {
   const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const BottomNavBar = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${API_BASE}/api/user/signout`, {
         method: "POST",
       })
 

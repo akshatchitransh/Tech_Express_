@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input"
 import { Toaster } from "../../components/ui/sonner"
 import { toast } from "sonner"
 
-
+const API_BASE_URL = 'https://tech-express-1.onrender.com';
 
 const formSchema = z.object({
   username: z
@@ -53,7 +53,7 @@ const SignUpForm = () => {
       setLoading(true)
       setErrorMessage(null)
 
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch(`${API_BASE}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

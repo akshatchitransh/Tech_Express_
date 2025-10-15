@@ -18,6 +18,8 @@ import Quill from "quill"
 import "quill/dist/quill.snow.css"
 
 import { useNavigate } from "react-router-dom"
+const API_BASE_URL = 'https://tech-express-1.onrender.com';
+
 
 const CreatePost = () => {
   const navigate = useNavigate()
@@ -87,7 +89,7 @@ const CreatePost = () => {
     e.preventDefault()
 
     try {
-      const res = await fetch("/api/post/create", {
+      const res = await fetch(`${API_BASE}/api/post/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
